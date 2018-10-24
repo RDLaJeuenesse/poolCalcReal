@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <header class="bg-light text-center">
+            <h1 class="col-sm">Pool Chemistry Log<br><h3><small class="text-black-50">Uptown Park Apartments</small></h3></h1>
+        </header>
+        <form>
+            <button class="btn btn-success btn-sm" type="button" data-toggle="collapse" data-target="#chlorineInstructions" aria-expanded="false" aria-controls="chlorineInstructions">Chlorine Test Instructions</button>
+            <div class="collapse" id="chlorineInstructions">
+                <div class="card card-body">
+                    <h6>Free Chlorine</h6>
+                    <ol>
+                        <li>Rinse and fill the small comparator tube to 9mL mark with water to be tested.</li>
+                        <li>Add 5 drops of R-0001 and 5 drops of R-0002. Cap and invert to mix.</li>
+                        <li>Match color with color standard. Record free chlorine as parts per million (ppm></li>
+                    </ol>
+                    <h6>Total Chlorine</h6>
+                    <ol>
+                        <li>Using the same water, add 5 drops of R-0003. Cap and invert to mix. Match color and record as parts per million (ppi).</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">FreeChlorine</span>
+                </div>
+                <input type="number" class="form-control" min="0" max="5">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Total Chlorine</span>
+                </div>
+                <input type="number" class="form-control" min="0" max="5">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Combined Chlorine</span>
+                </div>
+                <input type="text" class="form-control" disabled>
+            </div><br>
+            <button class="btn btn-success btn-sm" type="button" data-toggle="collapse" data-target="#pHTestInstructions" aria-expanded="false" aria-controls="pHTestInstructions">pH Test Instructions</button>
+            <div class="collapse" id="pHTestInstructions">
+                <div class="card card-body">
+                    <ol>
+                        <li>step</li>
+                        <li>step</li>
+                        <li>step</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">pH</span>
+                </div>
+                <input type="number" class="form-control" min="0" max="8">
+            </div><br>
+            <button class="btn btn-success btn-sm" type="button" data-toggle="collapse" data-target="#calciumInstructions" aria-expanded="false" aria-controls="calciumInstructions">Calcium Hardness Test Instructions</button>
+            <div class="collapse" id="calciumInstructions">
+                <div class="card card-body">
+                    Free Chlorine
+                    <ol>
+                        <li>Rinse and fill the small comparator tube to 9mL mark with water to be tested.</li>
+                        <li>Add 5 drops of R-0001 and 5 drops of R-0002. Cap and invert to mix.</li>
+                        <li>Match color with color standard. Record free chlorine as parts per million (ppm></li>
+                    </ol>
+                    Total Chlorine
+                    <ol>
+                        <li>Using the same water, add 5 drops of R-0003. Cap and invert to mix. Match color and record as parts per million (ppi).</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Calcuim Hardness</span>
+                </div>
+                <input type="number" class="form-control" min="0" max="300">
+            </div><br>
+            <button class="btn btn-success btn-sm" type="button" data-toggle="collapse" data-target="#alkalinityInstructions" aria-expanded="false" aria-controls="alkalintyInstructions">Alkalinity Test Instructions</button>
+            <div class="collapse" id="alkalinityInstructions">
+                <div class="card card-body">
+                    <ol>
+                        <li>this</li>
+                        <li>this</li>
+                        <li>this</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Alkalinity</span>
+                </div>
+                <input type="number" class="form-control" min="0" max="120">
+            </div><br>
+            <button class="btn btn-success btn-sm" type="button" data-toggle="collapse" data-target="#stabalizerInstructions" aria-expanded="false" aria-controls="stabalizerInstructions">Stablalizer Test Instructions</button>
+            <div class="collapse" id="stabalizerInstructions">
+                <div class="card card-body">
+                    <ol>
+                        <li>final</li>
+                        <li>final</li>
+                        <li>final</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Stabalizer</span>
+                </div>
+                <input type="number" class="form-control" min="0" max="100">
+            </div><br>
+            <button type="button" class="btn-primary btn-block">Calculate</button>
+        </form>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    </div>
+</body>
+</html>
