@@ -16,18 +16,20 @@
     </style>
 </head>
 <body>
-    <div class="container col-lg-5 col-sm-1">
-        <header class="bg-light text-center sticky-top">
+    <div class="contianer sticky-top">
+        <header class="bg-light text-center">
             <h1 class="col-sm">Pool Chemistry Log<br><h3><small class="text-black-50">Uptown Park Apartments</small></h3></h1>
         </header>
+    </div>
+    <div class="container col-lg-7 col-md-5 col-sm-1">
         <form>
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text font-weight-bold">Free Chlorine</span>
+                    <span class="input-group-text font-weight-bold">Free Chlorine&nbsp;</span>
                 </div>
                 <input type="number" class="form-control" min="0" max="5">
                 <div class="input-group-append">
-                    <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#chlorineInstructions" aria-expanded="false" aria-controls="chlorineInstructions">Chlorine Test Instructions</button>
+                    <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#chlorineInstructions" aria-expanded="false" aria-controls="chlorineInstructions">Instructions</button>
                 </div>
             </div>
             <div class="collapse" id="chlorineInstructions">
@@ -62,7 +64,7 @@
                 </div>
                 <input type="number" class="form-control" min="0" max="8">
                 <div class="input-group-append">
-                    <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#pHTestInstructions" aria-expanded="false" aria-controls="pHTestInstructions">pH Test Instructions</button>
+                    <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#pHTestInstructions" aria-expanded="false" aria-controls="pHTestInstructions">Instructions</button>
                 </div>
             </div>
             <div class="collapse" id="pHTestInstructions">
@@ -76,34 +78,11 @@
             </div><br>
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text font-weight-bold">Calcuim Hardness</span>
-                </div>
-                <input type="number" class="form-control" min="0" max="300">
-                <div class="input-group-append">
-                    <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#calciumInstructions" aria-expanded="false" aria-controls="calciumInstructions">Calcium Test Instructions</button>
-                </div>
-            </div>
-            <div class="collapse" id="calciumInstructions">
-                <div class="card card-body bg-dark text-white">
-                    <h6>Free Chlorine</h6>
-                    <ol>
-                        <li>Rinse and fill the small comparator tube to 9mL mark with water to be tested.</li>
-                        <li>Add 5 drops of R-0001 and 5 drops of R-0002. Cap and invert to mix.</li>
-                            <li>Match color with color standard. Record free chlorine as parts per million (ppm)</li>
-                    </ol>
-                    <h6>Total Chlorine</h6>
-                    <ol>
-                        <li>Using the same water, add 5 drops of R-0003. Cap and invert to mix. Match color and record as parts per million (ppm).</li>
-                    </ol>
-                </div>
-            </div><br>
-            <div class="input-group">
-                <div class="input-group-prepend">
                     <span class="input-group-text font-weight-bold">Alkalinity</span>
                 </div>
                 <input type="number" class="form-control" min="0" max="120">
                 <div class="input-group-append">
-                    <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#alkalinityInstructions" aria-expanded="false" aria-controls="alkalintyInstructions">Alkalinity Test Instructions</button>
+                    <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#alkalinityInstructions" aria-expanded="false" aria-controls="alkalintyInstructions">Instructions</button>
                 </div>
             </div>
             <div class="collapse" id="alkalinityInstructions">
@@ -121,7 +100,7 @@
                 </div>
                 <input type="number" class="form-control" min="0" max="100">
                 <div class="input-group-append">
-                    <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#stabalizerInstructions" aria-expanded="false" aria-controls="stabalizerInstructions">Cyanuric Acid Test Instructions</button>
+                    <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#stabalizerInstructions" aria-expanded="false" aria-controls="stabalizerInstructions">Instructions</button>
                 </div>
             </div>
             <div class="collapse" id="stabalizerInstructions">
@@ -133,6 +112,29 @@
                     </ol>
                 </div>
             </div><br>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text font-weight-bold">Calcuim Hardness</span>
+                </div>
+                <input type="number" class="form-control" min="0" max="300">
+                <div class="input-group-append">
+                    <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#calciumInstructions" aria-expanded="false" aria-controls="calciumInstructions">Instructions</button>
+                </div>
+            </div>
+            <div class="collapse" id="calciumInstructions">
+                <div class="card card-body bg-dark text-white">
+                    <h6>Free Chlorine</h6>
+                    <ol>
+                        <li>Rinse and fill the small comparator tube to 9mL mark with water to be tested.</li>
+                        <li>Add 5 drops of R-0001 and 5 drops of R-0002. Cap and invert to mix.</li>
+                        <li>Match color with color standard. Record free chlorine as parts per million (ppm)</li>
+                    </ol>
+                    <h6>Total Chlorine</h6>
+                        <ol>
+                            <li>Using the same water, add 5 drops of R-0003. Cap and invert to mix. Match color and record as parts per million (ppm).</li>
+                        </ol>
+                    </div>
+                </div><br>
             <button type="button" class="btn-primary btn-block">Calculate</button>
         </form>
     </div>
