@@ -21,13 +21,13 @@
             <h1 class="col-sm">Pool Chemistry Log<br><h3><small class="text-black-50">Uptown Park Apartments</small></h3></h1>
         </header>
     </div>
-    <div class="container col-lg-7 col-md-5 col-sm-1">
+    <div class="container col-lg-7 col-md-8 col-sm-1">
         <form>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text font-weight-bold">Free Chlorine&nbsp;</span>
                 </div>
-                <input type="number" class="form-control" min="0" max="5">
+                <input type="number" class="form-control" id="free" min="0" max="5">
                 <div class="input-group-append">
                     <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#chlorineInstructions" aria-expanded="false" aria-controls="chlorineInstructions">Instructions</button>
                 </div>
@@ -44,25 +44,29 @@
                     <ol>
                         <li>Using the same water, add 5 drops of R-0003. Cap and invert to mix. Match color and record as parts per million (ppm).</li>
                     </ol>
+                    <h6>Combined Chlorine</h6>
+                    <ol>
+                        <li>The combined chlorine will be calculated for you.</li>
+                    </ol>
                 </div>
             </div>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text font-weight-bold">Total Chlorine</span>
                 </div>
-                <input type="number" class="form-control" min="0" max="5">
+                <input type="number" class="form-control" id="total" min="0" max="5">
             </div>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text font-weight-bold">Combined Chlorine</span>
                 </div>
-                <input type="text" class="form-control" disabled>
+                <input type="text" class="form-control" id="combined" disabled>
             </div><br>
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text font-weight-bold">pH</span>
                 </div>
-                <input type="number" class="form-control" min="0" max="8">
+                <input type="number" class="form-control" id="pH" min="0" max="8">
                 <div class="input-group-append">
                     <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#pHTestInstructions" aria-expanded="false" aria-controls="pHTestInstructions">Instructions</button>
                 </div>
@@ -70,9 +74,9 @@
             <div class="collapse" id="pHTestInstructions">
                 <div class="card card-body bg-dark text-white">
                     <ol>
-                        <li>step</li>
-                        <li>step</li>
-                        <li>step</li>
+                        <li>Rinse and fill large comparator tube to 44 mL mark with water to be tested.</li>
+                        <li>Add 5 drops of R-0004. Cap and invert to mix.</li>
+                        <li>Compare to color standard and record pH units.</li>
                     </ol>
                 </div>
             </div><br>
@@ -80,7 +84,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text font-weight-bold">Alkalinity</span>
                 </div>
-                <input type="number" class="form-control" min="0" max="120">
+                <input type="number" class="form-control" id="alk" min="0" max="120">
                 <div class="input-group-append">
                     <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#alkalinityInstructions" aria-expanded="false" aria-controls="alkalintyInstructions">Instructions</button>
                 </div>
@@ -88,9 +92,11 @@
             <div class="collapse" id="alkalinityInstructions">
                 <div class="card card-body bg-dark text-white">
                     <ol>
-                        <li>this</li>
-                        <li>this</li>
-                        <li>this</li>
+                        <li>Rinse and fill large comparator tube to 25 mL mark with to be tested.</li>
+                        <li>Add 2 drops of R-0007. Swirl to mix.</li>
+                        <li>Add 5 drops of R-0008. The sample should turn green.</li>
+                        <li>Add R-0009 (keeping count of each drop). After each drop swirl. Do this until the sample turns red. </li>
+                        <li>Multiply drop count from step 4 by 10 and record this as ppm.</li>
                     </ol>
                 </div>
             </div><br>
@@ -98,7 +104,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text font-weight-bold">Stabalizer</span>
                 </div>
-                <input type="number" class="form-control" min="0" max="100">
+                <input type="number" class="form-control" id="cynAcid" min="0" max="100">
                 <div class="input-group-append">
                     <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#stabalizerInstructions" aria-expanded="false" aria-controls="stabalizerInstructions">Instructions</button>
                 </div>
@@ -106,9 +112,11 @@
             <div class="collapse" id="stabalizerInstructions">
                 <div class="card card-body bg-dark text-white">
                     <ol>
-                        <li>final</li>
-                        <li>final</li>
-                        <li>final</li>
+                        <li>Fill tube to fill line (black mark) with sample water.</li>
+                        <li>Fill tube to second line with testing agent.</li>
+                        <li>Using the plunger, agitate for 30 seconds</li>
+                        <li>Push plunger to the bottom of the tube. Slowly lift the plunger until the black dot is visible.</li>
+                        <li>Record as ppm.</li>
                     </ol>
                 </div>
             </div><br>
@@ -116,30 +124,28 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text font-weight-bold">Calcuim Hardness</span>
                 </div>
-                <input type="number" class="form-control" min="0" max="300">
+                <input type="number" class="form-control" id="calcium" min="0" max="300">
                 <div class="input-group-append">
                     <button class="btn btn-info btn-sm" type="button" data-toggle="collapse" data-target="#calciumInstructions" aria-expanded="false" aria-controls="calciumInstructions">Instructions</button>
                 </div>
             </div>
             <div class="collapse" id="calciumInstructions">
                 <div class="card card-body bg-dark text-white">
-                    <h6>Free Chlorine</h6>
                     <ol>
-                        <li>Rinse and fill the small comparator tube to 9mL mark with water to be tested.</li>
-                        <li>Add 5 drops of R-0001 and 5 drops of R-0002. Cap and invert to mix.</li>
-                        <li>Match color with color standard. Record free chlorine as parts per million (ppm)</li>
+                        <li>Rinse and fill large comparator tube to 25 mL mark with water to be tested.</li>
+                        <li>Add 20 drops R-0010. Swirl to mix.</li>
+                        <li>Add 5 drops of R-0011L. Swirl to mix. If calcium hardness is present the sample will turn red.</li>
+                        <li>Add R-0012 dropwise (keep a count of each drop). After each drop swirl to mix. Continue until sample turns from red to blue.</li>
+                        <li>Multiply drop count from step 4 by 10 and record as ppm.</li>
                     </ol>
-                    <h6>Total Chlorine</h6>
-                        <ol>
-                            <li>Using the same water, add 5 drops of R-0003. Cap and invert to mix. Match color and record as parts per million (ppm).</li>
-                        </ol>
-                    </div>
-                </div><br>
-            <button type="button" class="btn-primary btn-block">Calculate</button>
+                </div>
+            </div><br>
+            <button type="button" id="results" class="btn-primary btn-block">Calculate</button>
         </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
 </body>
 </html>
