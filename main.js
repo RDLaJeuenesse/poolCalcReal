@@ -12,12 +12,22 @@ const idealResults = {
     'calciumHardness': 300,
     'cyanuricAcid': 40
 };
+//This object contains the names of the curren chemicals being used
+const currentChemicalList = {
+    chlorineIncrease : "",
+    chlorineDecrease : "",
+    pHIncrease : "",
+    phDecrease : "",
+    alkalinityIncrease : "",
+    alkalinityDecrease : "",
+    calciumIncrease : "",
+    cyanuricAcidIncrease: ""
+}
 //chemicals and amounts to change water chem by the given ppm
-const chemicalGuide = {
+const chemicalDosageGuide = {
     //increase chlorine
     //RICHARD:: check to see what we use "refresh"
     'calciumHypochlorite': {
-        'name': 'Shockwave or Refresh',
         'divUnit': 16,
         'unit': 'oz',
         'ppmChange': 1,
@@ -25,15 +35,13 @@ const chemicalGuide = {
     },
     //increase total alkalinity
     'sodiumBicarboate': {
-        'name': 'Baking Soda',
         'divUnit': 1,
         'unit': 'lb',
         'ppmChange': 10,
         'amountNeeded': 1.4
     },
-    //decrease total alkalinity
+    //decrease total ph
     'muriaticAcid': {
-        'name': 'muriatic acid',
         'divUnit': 128,
         'unit': 'flOz',
         'ppmChange': 10,
@@ -41,7 +49,6 @@ const chemicalGuide = {
     },
     //increase calcium hardness......RICHARD:: CHECK TO SEE IF WE ARE USING 77% OR 100% THIS IS BASED ON 100%
     'calciumChloride': {
-        'name': 'Calcium Elevator',
         'divUnit': 1,
         'unit': 'lb',
         'ppmChange': 10,
@@ -49,7 +56,6 @@ const chemicalGuide = {
     },
     //increase stabalizer (cyanuric acid)
     'cyanuricAcid': {
-        'name': 'cyanuric acid',
         'divUnit': 16,
         'unit': 'oz',
         'ppmChange': 10,
@@ -57,7 +63,6 @@ const chemicalGuide = {
     },
     //neutralize chlorine
     'sodiumThiosulfate': {
-        'name': 'neutralizer',
         'divUnit': 16,
         'unit': 'oz',
         'ppmChange': 1,
@@ -104,11 +109,11 @@ function chlorineTest(a, b) {
         break;
     }
     let amountToAdd = addFree + addBreak;
-    if(amountToAdd > chemicalGuide.calciumHypochlorite.divUnit){
-        amountToAdd = amountToAdd/chemicalGuide.calciumHypochlorite.divUnit;
-        resultsArray.push(amountToAdd+' lbs. of '+chemicalGuide.calciumHypochlorite.name);
+    if(amountToAdd > chemicalDosageGuide.calciumHypochlorite.divUnit){
+        amountToAdd = amountToAdd/chemicalDosageGuide.calciumHypochlorite.divUnit;
+        resultsArray.push(amountToAdd+' lbs. of '+chemicalDosageGuide.calciumHypochlorite.name);
     }else{
-        resultsArray.push(amountToAdd+' '+chemicalGuide.calciumHypochlorite.unit);
+        resultsArray.push(amountToAdd+' '+chemicalDosageGuide.calciumHypochlorite.unit);
     };
     return;
 }
@@ -116,12 +121,12 @@ function chlorineTest(a, b) {
 function breakPoint(combined, free) {
     let breakPointChlorination = combined * 10;
     let chemChange = round(breakPointChlorination - free, 2);
-    let addAmountBreakpoint = round((chemicalGuide.calciumHypochlorite.amountNeeded * (poolGallons / 10000) * chemChange),2);
+    let addAmountBreakpoint = round((chemicalDosageGuide.calciumHypochlorite.amountNeeded * (poolGallons / 10000) * chemChange),2);
     return addAmountBreakpoint;
 }
 function freeChlorineLow(a){
     let chemChange = idealResults.freeChlorine - a;
-    let addAmountLow = round((chemicalGuide.calciumHypochlorite.amountNeeded*(poolGallons / 10000)*chemChange),2);
+    let addAmountLow = round((chemicalDosageGuide.calciumHypochlorite.amountNeeded*(poolGallons / 10000)*chemChange),2);
     return addAmountLow;
 }
 function reduceChlorine(a){
@@ -192,9 +197,9 @@ function runTests() {
     console.log(testInputs);
     chlorineTest(testInputs[0], testInputs[1]);
     pH(testInputs[3]);
-    calciumHardness(testInputs[4]);
-    totalAlkalinity(testInputs[5]);
-    cyanuricAcid(testInputs[6]);
+    calciumHardness(testInputs[6]);
+    totalAlkalinity(testInputs[4]);
+    cyanuricAcid(testInputs[5]);
     //resultsMessage(testInputs);
 }
 //this event listener updates the cobined chlorine total before the inputs array has been created
@@ -203,7 +208,6 @@ document.getElementById('total').addEventListener('blur', function () {
 });
 btnResults.addEventListener('click', function () {
     runTests();
-    alert("Please check below for your results.");
 })
 
 console.log("I'm Live!");

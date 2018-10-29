@@ -10,19 +10,36 @@
         html    {
             overflow: scroll;
         }
+        header {
+            background: rgb(191, 212, 223);
+        }
+        #poolChemicalInputForm  {
+            border: red 2px dotted;
+        }
         /* input::-webkit-inner-spin-button{
             opacity: 1;
         } */
     </style>
 </head>
 <body>
-    <div class="contianer sticky-top">
-        <header class="bg-light text-center">
-            <h1 class="col-sm">Pool Chemistry Log<br><h3><small class="text-black-50">Uptown Park Apartments</small></h3></h1>
+    <div class="container sticky-top">
+        <header class="row bg-dark">
+            <div class=" col-sm-2">
+                logo
+            </div>
+            <div class="col">
+                <div class="row">
+                    <div class="col bg-warning">
+                        <h3>Pool Chemistry Log</h3>
+                        <h4 class="text-black-50"><small>Uptown Park Apartments</small></h4>
+                    </div>
+                </div>
+            </div>
         </header>
-    </div>
-    <div class="container col-lg-7 col-md-8 col-sm-1">
-        <form>
+    </div><br>
+    <!--Calculations form input container-->
+    <div class="container col col-lg-7 col-md-1 col-sm-1">
+        <form id="poolChemicalInputForm">
             <div class="input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text font-weight-bold">Free Chlorine&nbsp;</span>
@@ -140,8 +157,33 @@
                     </ol>
                 </div>
             </div><br>
-            <button type="button" id="results" class="btn-primary btn-block">Calculate</button>
+            <button type="button" id="results" class="btn-primary btn-block">Post Test Results</button>
         </form>
+    </div>
+    <br>
+    <!--Reports container-->
+    <div class="container">
+        <div class="row text-center">
+            <div class="col bg-secondary text-white">Single Item Column</div><br><br><br><br>
+        </div>
+        <div class="row text-center mb-5">
+            <div class="col bg-dark text-white">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="col">Column 2</div>
+            <div class="col bg-dark text-white">column 3</div>
+        </div>
+    <div class="container fixed-bottom m">
+            <footer class="row bg-warning">
+                This is the footer.
+            </footer>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
