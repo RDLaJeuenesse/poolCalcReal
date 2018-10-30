@@ -1,8 +1,9 @@
 //constant declarations
 //change in pool size can be made to poolGallons
-const poolGallons = 26000;
+const poolGallons = 90000;
 const galsPerCubicFoot = 7.5;
 const divGalsBy = 10000;
+const poolFactor = poolGallons/divGalsBy;
 //perfect test results
 const idealResults = {
     'freeChlorine': 3,
@@ -151,19 +152,28 @@ function calciumHardness(a) {
 
     }
 }
+
+
+
 function totalAlkalinity(a) {
     if (a.value <= 140 && a.value >= 110) {
-        document.getElementById('alk').value = a.value;
-        document.getElementById('alk').classList.remove('needsWork');
+        console.log('alkalinity fine '+a.value);
         resultsArray.push('The alkalinity level is fine.');
     } else if(a.value > 140){
         //decrease alkalintiy
         console.log('alkalinity high '+a.value);
+        resultsArray.push("The alkalinity is high.");
     }else{
         //increase alkalintiy
         console.log('alkalinity is low '+a.value);
+        resultsArray.push("The alkalinity is low.");
     };
 }
+
+
+
+
+
 function cyanuricAcid(a) {
     if (a.value <= 50 && a.value >= 25) {
         document.getElementById('cynAcid').value = a.value;
@@ -196,10 +206,11 @@ function runTests() {
     console.log("Here are the inputs");
     console.log(testInputs);
     chlorineTest(testInputs[0], testInputs[1]);
+    //testInputs[2] is the calculated combinedChlorine
     pH(testInputs[3]);
-    calciumHardness(testInputs[6]);
     totalAlkalinity(testInputs[4]);
     cyanuricAcid(testInputs[5]);
+    calciumHardness(testInputs[6]);
     //resultsMessage(testInputs);
 }
 //this event listener updates the cobined chlorine total before the inputs array has been created
