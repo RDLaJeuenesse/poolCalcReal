@@ -1,9 +1,9 @@
 //constant declarations
-//change in pool size can be made to poolGallons
-const poolGallons = 90000;
+//change in pool size can be made to poolVolume
+const poolVolume = 26000;
 const galsPerCubicFoot = 7.5;
 const divGalsBy = 10000;
-const poolFactor = poolGallons/divGalsBy;
+const poolFactor = poolVolume/divGalsBy;
 //perfect test results
 const idealResults = {
     'freeChlorine': 3,
@@ -122,12 +122,12 @@ function chlorineTest(a, b) {
 function breakPoint(combined, free) {
     let breakPointChlorination = combined * 10;
     let chemChange = round(breakPointChlorination - free, 2);
-    let addAmountBreakpoint = round((chemicalDosageGuide.calciumHypochlorite.amountNeeded * (poolGallons / 10000) * chemChange),2);
+    let addAmountBreakpoint = round((chemicalDosageGuide.calciumHypochlorite.amountNeeded * (poolVolume / 10000) * chemChange),2);
     return addAmountBreakpoint;
 }
 function freeChlorineLow(a){
     let chemChange = idealResults.freeChlorine - a;
-    let addAmountLow = round((chemicalDosageGuide.calciumHypochlorite.amountNeeded*(poolGallons / 10000)*chemChange),2);
+    let addAmountLow = round((chemicalDosageGuide.calciumHypochlorite.amountNeeded*poolFactor*chemChange),2);
     return addAmountLow;
 }
 function reduceChlorine(a){
