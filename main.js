@@ -6,17 +6,17 @@ const divGalsBy = 10000;
 const poolFactor = poolVolume/divGalsBy;
 //perfect test results
 const idealResults = {
-    'freeChlorine': 5,
+    'freeChlorine': 3,
     'combinedChlorine': 0,
     'pH': 7.4,
     'totalAlkalinity': 110,
     'calciumHardness': 300,
     'cyanuricAcid': 40
 };
-//This object contains the names of the curren chemicals being used
+//This object contains the names of the current chemicals being used
 const currentChemicalList = {
     chlorineIncrease : "",
-    chlorineDecrease : "",
+    chlorineDecrease : "Sodium Thiosulfate",
     pHIncrease : "",
     phDecrease : "",
     alkalinityIncrease : "",
@@ -25,51 +25,52 @@ const currentChemicalList = {
     cyanuricAcidIncrease: ""
 }
 //chemicals and amounts to change water chem by the given ppm
-const chemicalDosageGuide = {
+const chemicalDosageGuide = [
     //increase chlorine
-    //RICHARD:: check to see what we use "refresh"
-    calciumHypochlorite: {
+    calciumHypochlorite = {
         divUnit: 16,
         unit: 'oz',
         ppmChange: 1,
         amountNeeded: 2
     },
     //increase total alkalinity
-    sodiumBicarboate: {
+    sodiumBicarboate = {
         divUnit: 1,
         unit: 'lb',
         ppmChange: 10,
         amountNeeded: 1.5
     },
     //decrease total ph
-    muriaticAcid: {
+    muriaticAcid = {
         divUnit: 128,
         unit: 'flOz',
         ppmChange: 10,
         amountNeeded: 26
     },
     //increase calcium hardness......RICHARD:: CHECK TO SEE IF WE ARE USING 77% OR 100% THIS IS BASED ON 100%
-    calciumChloride: {
+    calciumChloride = {
         divUnit: 1,
         unit: 'lb',
         ppmChange: 10,
         amountNeeded: .9
     },
     //increase stabalizer (cyanuric acid)
-    cyanuricAcid: {
+    cyanuricAcid = {
         divUnit: 16,
         unit: 'oz',
         ppmChange: 10,
         amountNeeded: 13
     },
     //neutralize chlorine
-    sodiumThiosulfate: {
+    sodiumThiosulfate = {
+        name: currentChemicalList.chlorineDecrease,
         divUnit: 16,
         unit: 'oz',
         ppmChange: 1,
         amountNeeded: 2.6
     }
-};
+];
+
 //activate results button
 let btnResults = document.getElementById('results');
 //rounds all results to 2 decimal places
@@ -88,27 +89,6 @@ function chlorineTest(a, b) {
         console.log("You have nasty chlorimines in the water. Time for a breakpoint chlorination!");
         breakPoint(combined, free);
     }
-/*  let addFree = 0;
-    let addBreak = 0;
-    let reduceChlorineAmount = 0; 
-     switch(free){
-        case 0:
-        case 1:
-        case 2:
-        freeChlorineLow(free);
-        break;
-        case 3:
-        break;
-        default:
-        reduceChlorine(free);
-    }
-    switch(combined){
-        case 0:
-        break;
-        default:
-        addBreak = breakPoint(combined, free);
-        break;
-    } */
 }
 //calculates the amount of chemical need for breakpoint chlorination
 function breakPoint(a, b) {
@@ -126,7 +106,7 @@ function freeChlorineLow(a){
 }
 function reduceChlorine(a){
     let chemChange = a - idealResults.freeChlorine;
-    let addAmountHigh = round((poolFactor*(chemChange/chemicalDosageGuide.sodiumThiosulfate.ppmChange)*chemicalDosageGuide.sodiumThiosulfate.amountNeeded),2);
+    let addAmountHigh = round((poolFactor*(chemChange/chemicalDosageGuide.sodiumThiosulfate.ppmChange)*chemicalDosageGuide.sodiumThiosulfate.amountNeeded),2);  
     console.log('You are over chlorinated.')
     console.log("This is the amount of chlorine reducer to add: "+addAmountHigh);
     resultsArray.push('Reduce chlorine with '+addAmountHigh+' oz.');
@@ -210,8 +190,12 @@ btnResults.addEventListener('click', function () {
     runTests();
 })
 
-console.log("I'm Live!");
-
+console.log("Chemical Dosage Guide: ");
+console.log(chemicalDosageGuide);
+console.log("Chemical Dosage Guide Object Keys: "+Object.keys(chemicalDosageGuide));
+console.log(Object.keys(chemicalDosageGuide)[0]);
+console.log(typeof(Object.keys(chemicalDosageGuide)[0]));
+console.log(chemicalDosageGuide[1].amountNeeded);
 
 /**
  * Standard chemical dosage equation
