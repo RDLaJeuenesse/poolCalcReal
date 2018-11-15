@@ -82,15 +82,16 @@ function round(value, decimals) {
 }
 //results array is global so we can see all results without accessing the actual test functions
 let resultsArray = [];
-
+console.log("Chemical Dosage Guide: ");
+console.log(chemicalDosageGuide);
 
 
 
 
 function chemAmount(a,b){
 
-    console.log(a);
-    console.log(b.name);
+    console.log(a.name);
+    console.log(b);
 }
 
 
@@ -104,14 +105,20 @@ function chlorineTest(a, b) {
     let free = Number(a.value);
     let total = Number(b.value);
     let combined = round(total - free, 2);
-    if(free < 3 && combined === 0){
+
+    combined > 0 ? breakPoint(combined, free) : console.log('Need to determine high or low.');
+    console.log("it continued");
+    /* if(free < 3 && combined === 0){
         chemAmount(chemicalDosageGuide[0],free);
-    }else if(free > 3){
+    }else if(free > 3 && combined === 0){
         chemAmount(chemicalDosageGuide[6], free);
     }else if(combined > 0){
         console.log("You have nasty chlorimines in the water. Time for a breakpoint chlorination!");
         breakPoint(combined, free);
     }
+    else{
+        console.log('The test is invalid! Please retest.');
+    } */
 }
 //calculates the amount of chemical need for breakpoint chlorination
 function breakPoint(a, b) {
@@ -125,14 +132,14 @@ function breakPoint(a, b) {
 function pH(a) {
     let pH = a.value;
     if (pH <= 7.6 && pH >= 7.2) {
-        console.log("The pH is fine: "+ a.value);
+        console.log("The pH is fine: "+ pH);
     }
     else if(pH < 7.2){
         console.log('pH is low '+a.value);
-        chemAmount(pH, chemicalDosageGuide[3]);
+        chemAmount(chemicalDosageGuide[3], pH);
     }else{
-        console.log("pH is high: "+a.value);
-        chemAmount(pH, chemicalDosageGuide[2]);
+        console.log("pH is high: "+pH);
+        chemAmount(chemicalDosageGuide[2],pH);
         /* let addAmount = round(poolFactor*(( a.value - idealResults.pH)/chemicalDosageGuide.muriaticAcid.ppmChange)*chemicalDosageGuide.muriaticAcid.amountNeeded,2);
         console.log("Add amount: "+addAmount); */
     }
@@ -168,9 +175,6 @@ document.getElementById('total').addEventListener('blur', function () {
 btnResults.addEventListener('click', function () {
     runTests();
 })
-
-console.log("Chemical Dosage Guide: ");
-console.log(chemicalDosageGuide);
 /* let pickle = chemicalDosageGuide[0];
 console.log(pickle);
 console.log(typeof(pickle));
