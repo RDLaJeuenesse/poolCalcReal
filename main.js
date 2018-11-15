@@ -4,6 +4,7 @@ const poolVolume = 26000;
 const galsPerCubicFoot = 7.5;
 const divGalsBy = 10000;
 const poolFactor = poolVolume/divGalsBy;
+let currentLevel = "okay";
 //perfect test results
 const idealResults = {
     'freeChlorine': 3,
@@ -38,6 +39,14 @@ const chemicalDosageGuide = [
         unit: 'flOz',
         ppmChange: 10,
         amountNeeded: 26
+    },
+    //increase total pH
+    {
+        name: "Soda Ash",
+        divUnit: 1,
+        unit: 'lb',
+        ppmChange: 10,
+        amountNeeded: 1,
     },
     //increase calcium hardness......RICHARD:: CHECK TO SEE IF WE ARE USING 77% OR 100% THIS IS BASED ON 100%
     {
@@ -78,12 +87,10 @@ let resultsArray = [];
 
 
 
-function chemAmount(a, b){
-    let current = a;
-    let currentLevel = b;
-    
-    console.log(current);
-    console.log(currentLevel);
+function chemAmount(a,b){
+
+    console.log(a);
+    console.log(b.name);
 }
 
 
@@ -97,14 +104,10 @@ function chlorineTest(a, b) {
     let free = Number(a.value);
     let total = Number(b.value);
     let combined = round(total - free, 2);
-    let currentLevel = "okay";
     if(free < 3 && combined === 0){
-        currentLevel = "low";
-        console.log(currentLevel);
-        chemAmount(free, currentLevel);
+        chemAmount(chemicalDosageGuide[0],free);
     }else if(free > 3){
-        console.log('Your chlorine is high!');
-        chemAmount(free);
+        chemAmount(chemicalDosageGuide[6], free);
     }else if(combined > 0){
         console.log("You have nasty chlorimines in the water. Time for a breakpoint chlorination!");
         breakPoint(combined, free);
@@ -117,6 +120,22 @@ function breakPoint(a, b) {
     let addAmountBreakpoint = round((chemicalDosageGuide[0].amountNeeded * poolFactor* chemChange),2);
     console.log(addAmountBreakpoint);
     return addAmountBreakpoint;
+}
+//pH test
+function pH(a) {
+    let pH = a.value;
+    if (pH <= 7.6 && pH >= 7.2) {
+        console.log("The pH is fine: "+ a.value);
+    }
+    else if(pH < 7.2){
+        console.log('pH is low '+a.value);
+        chemAmount(pH, chemicalDosageGuide[3]);
+    }else{
+        console.log("pH is high: "+a.value);
+        chemAmount(pH, chemicalDosageGuide[2]);
+        /* let addAmount = round(poolFactor*(( a.value - idealResults.pH)/chemicalDosageGuide.muriaticAcid.ppmChange)*chemicalDosageGuide.muriaticAcid.amountNeeded,2);
+        console.log("Add amount: "+addAmount); */
+    }
 }
 
 
@@ -136,8 +155,8 @@ function runTests() {
     console.log(testInputs);
     chlorineTest(testInputs[0], testInputs[1]);
     //testInputs[2] is the calculated combinedChlorine
-/*     pH(testInputs[3]);
-    totalAlkalinity(testInputs[4]);
+    pH(testInputs[3]);
+/*totalAlkalinity(testInputs[4]);
     cyanuricAcid(testInputs[5]);
     calciumHardness(testInputs[6]); */
     //resultsMessage(testInputs);
@@ -152,6 +171,10 @@ btnResults.addEventListener('click', function () {
 
 console.log("Chemical Dosage Guide: ");
 console.log(chemicalDosageGuide);
+/* let pickle = chemicalDosageGuide[0];
+console.log(pickle);
+console.log(typeof(pickle));
+console.log(pickle.name); */
 
 /**
  * Standard chemical dosage equation
