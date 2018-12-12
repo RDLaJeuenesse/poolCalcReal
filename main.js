@@ -94,6 +94,7 @@ function chemAmount(a, b, c){
     let dosage = Math.abs(round(poolFactor*((b - a) / c.ppmChange)*c.amountNeeded,2));
     console.log(c.name);
     console.log(dosage +' '+c.unit);
+    resultsArray.push(dosage+' '+c.unit);
 }
 
 //determines combined chlorine and determines the need for breakPoint()
@@ -114,6 +115,7 @@ function chlorineCorrection(free){
     }else if(free > idealResults.freeChlorine){
         chemAmount(free, idealResults.freeChlorine, chemicalDosageGuide[6]);
     }else{
+        resultsArray.push("Chlorine is within range.");
         console.log("Chlorine is within range!");
     };
     return (chemAmount);
@@ -125,6 +127,7 @@ function breakPoint(a, b) {
     let chemChange = round(breakPointChlorination - b, 2);
     let addAmountBreakpoint = round((chemicalDosageGuide[0].amountNeeded * poolFactor* chemChange),2);
     console.log(addAmountBreakpoint + ' ' +chemicalDosageGuide[0].unit);
+    resultsArray.push(addAmountBreakpoint);
     return addAmountBreakpoint;
 }
 //pH test
@@ -132,6 +135,7 @@ function pH(a) {
     let pH = a.value;
     if (pH <= 7.6 && pH >= 7.2) {
         console.log("pH is within range!");
+        resultsArray.push("pH is within range.")
     }
     else if(pH < 7.2){
         chemAmount(pH, idealResults.pH, chemicalDosageGuide[3]);
@@ -143,6 +147,7 @@ function pH(a) {
 function totalAlkalinity(a) {
     let alk = a.value;
     if (alk <= 120 && alk >= 80) {
+        resultsArray.push("Alkalintity is within range.");
         console.log("Alkalinity is within range!");
     }
     else if(alk < 80){
@@ -156,21 +161,25 @@ function cyanuricAcid(a) {
     let cyanuric = a.value;
     if (cyanuric <= 100 && cyanuric >= 50) {
         console.log("Cyanuric acid is within range!");
+        resultsArray.push("Cyanuric acid is within range.");
     }
     else if(cyanuric < 100){
         chemAmount(cyanuric, idealResults.cyanuricAcid, chemicalDosageGuide[5]);
     }else{
         console.log("Cyanuric is high drain two feet of water and refill.");
+        resultsArray.push("Cyanuric is high drain two feet of water and refill.");
     }
 }
 function calciumHardness(a) {
     let calcium = a.value;
     if (calcium <= 400 && calcium >= 150) {
         console.log("Calcium is within range!");
+        resultsArray.push("Calcium is within range.");
     }
     else if(calcium < 150){
         chemAmount(calcium, idealResults.calciumHardness, chemicalDosageGuide[4]);
     }else{
+        resultsArray.push("Calcium is high drain two feet of water and refill.");
         console.log("Calcium is high drain two feet of water and refill.");
     }
 }
