@@ -82,7 +82,6 @@ function round(value, decimals) {
 //results array is global so we can see all results without accessing the actual test functions
 let resultsArray = [];
 
-
 /**
  * Standard chemical dosage equation
  * *****INCREASE CHEMICAL
@@ -94,7 +93,7 @@ let resultsArray = [];
 function chemAmount(a, b, c){
     let dosage = Math.abs(round(poolFactor*((b - a) / c.ppmChange)*c.amountNeeded,2));
     console.log(c.name);
-    console.log(dosage);
+    console.log(dosage +' '+c.unit);
 }
 
 //determines combined chlorine and determines the need for breakPoint()
@@ -112,8 +111,10 @@ function chlorineTest(a, b) {
 function chlorineCorrection(free){
     if(free < idealResults.freeChlorine){
         chemAmount(free, idealResults.freeChlorine, chemicalDosageGuide[0]);
-    }else{
+    }else if(free > idealResults.freeChlorine){
         chemAmount(free, idealResults.freeChlorine, chemicalDosageGuide[6]);
+    }else{
+        console.log("Chlorine is within range!");
     };
     return (chemAmount);
 }
@@ -123,7 +124,7 @@ function breakPoint(a, b) {
     let breakPointChlorination = a * 10;
     let chemChange = round(breakPointChlorination - b, 2);
     let addAmountBreakpoint = round((chemicalDosageGuide[0].amountNeeded * poolFactor* chemChange),2);
-    console.log(addAmountBreakpoint);
+    console.log(addAmountBreakpoint + ' ' +chemicalDosageGuide[0].unit);
     return addAmountBreakpoint;
 }
 //pH test
@@ -148,7 +149,7 @@ function totalAlkalinity(a) {
         chemAmount(alk, idealResults.totalAlkalinity, chemicalDosageGuide[1]);
     }else{
         console.log("Alkalinity is high: "+alk);
-        chemAmount(alk, idealResults.alkalinity, chemicalDosageGuide[2]);
+        chemAmount(alk, idealResults.totalAlkalinity, chemicalDosageGuide[2]);
     }
 }
 function cyanuricAcid(a) {
@@ -165,7 +166,7 @@ function cyanuricAcid(a) {
 function calciumHardness(a) {
     let calcium = a.value;
     if (calcium <= 400 && calcium >= 150) {
-        console.log("Calcium acid is within range!");
+        console.log("Calcium is within range!");
     }
     else if(calcium < 150){
         chemAmount(calcium, idealResults.calciumHardness, chemicalDosageGuide[4]);
@@ -185,6 +186,8 @@ function runTests() {
     totalAlkalinity(testInputs[4]);
     cyanuricAcid(testInputs[5]);
     calciumHardness(testInputs[6]);
+    console.log("Results Array: ");
+    console.log(resultsArray);
     //resultsMessage(testInputs);
 }
 //this event listener updates the cobined chlorine total before the inputs array has been created
