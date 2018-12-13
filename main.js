@@ -92,8 +92,7 @@ let resultsArray = [];
  //chemAmount takes current, ideal, and chemDosageGuide[chemical]
 function chemAmount(a, b, c){
     let dosage = Math.abs(round(poolFactor*((b - a) / c.ppmChange)*c.amountNeeded,2));
-    console.log(c.name);
-    console.log(dosage +' '+c.unit);
+    console.log(c.name + ' ' + dosage +' '+c.unit);
     resultsArray.push(dosage+' '+c.unit);
 }
 
@@ -118,7 +117,7 @@ function chlorineCorrection(free){
         resultsArray.push("Chlorine is within range.");
         console.log("Chlorine is within range!");
     };
-    return (chemAmount);
+    return (chemAmount); 
 }
 //calculates the amount of chemical need for breakpoint chlorination
 function breakPoint(a, b) {
@@ -130,6 +129,8 @@ function breakPoint(a, b) {
     resultsArray.push(addAmountBreakpoint);
     return addAmountBreakpoint;
 }
+
+
 //pH test
 function pH(a) {
     let pH = a.value;
